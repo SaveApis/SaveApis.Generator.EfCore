@@ -1,7 +1,7 @@
 ﻿{
   "skipDirty": true,
   "changelog": {
-    "header": "SaveApis.Web",
+    "header": "SaveApis.Generator.EfCore",
     "includeAllCommits": true,
     "sections": [
       {

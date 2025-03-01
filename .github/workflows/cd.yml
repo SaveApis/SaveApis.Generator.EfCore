@@ -1,0 +1,45 @@
+﻿name: CD
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'CHANGELOG.md'
+
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+      - name: Cache
+        id: cache
+        uses: actions/cache@v4.2.1
+        with:
+          path: |
+            ~/.nuget/packages
+            **/obj
+          key: ${{ hashFiles('**/*.csproj') }}-build
+      
+      
+      # Setup
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4.3.0
+        with:
+          dotnet-version: 9.0.x
+      
+      # Action
+      - name: Restore dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: dotnet restore src/SaveApis.Generator.EfCore/SaveApis.Generator.EfCore.csproj
+      - name: Build
+        run: dotnet build src/SaveApis.Generator.EfCore/SaveApis.Generator.EfCore.csproj --nologo --configuration Release --no-restore
+      - name: Pack
+        run: dotnet pack src/SaveApis.Generator.EfCore/SaveApis.Generator.EfCore.csproj -o publish/ --nologo --configuration Release --no-restore
+      - name: Publish
+        run: dotnet nuget push publish/*.nupkg --source https://nuget.pkg.github.com/SaveApis/index.json --api-key ${{ github.token }}
