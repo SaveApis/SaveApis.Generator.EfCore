@@ -1,0 +1,58 @@
+﻿name: CI
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.2.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIX_CSHARP: true
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_CSHARP: true
+          VALIDATE_GITHUB_ACTIONS: true
+          VALIDATE_GITLEAKS: true
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+      - name: Cache
+        id: cache
+        uses: actions/cache@v4.2.1
+        with:
+          path: |
+            ~/.nuget/packages
+            **/obj
+          key: ${{ hashFiles('**/*.csproj') }}-build
+
+      # Setup
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4.3.0
+        with:
+          dotnet-version: 9.0.x
+      
+      # Action
+      - name: Restore dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: dotnet restore src/SaveApis.Generator.EfCore/SaveApis.Generator.EfCore.csproj
+      - name: Build
+        run: dotnet build src/SaveApis.Generator.EfCore/SaveApis.Generator.EfCore.csproj --nologo --configuration Release --no-restore
