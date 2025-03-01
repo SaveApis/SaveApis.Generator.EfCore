@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="1.0.1"></a>
+## [1.0.1](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v1.0.1) (2025-03-01)
+
+### 🐛 Bug Fixes
+
+* **deps:** Fix version mismatch with Microsoft.EntityFramework.Design ([#5](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/5)) ([311ffce](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/311ffce4a050e6becbc667d9ef9819fb91683aa8))
+
 <a name="1.0.0"></a>
 ## [1.0.0](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v1.0.0) (2025-03-01)
 
