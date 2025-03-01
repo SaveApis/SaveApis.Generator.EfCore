@@ -1,0 +1,306 @@
+root = true
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+
+[*]
+indent_style = space
+
+# Microsoft .NET properties
+csharp_new_line_before_members_in_object_initializers = false
+csharp_preferred_modifier_order = protected, public, virtual, abstract, file, new, internal, sealed, private, override, static, readonly, extern, unsafe, volatile, required, async:suggestion
+csharp_preserve_single_line_blocks = true
+
+# ReSharper properties
+resharper_blank_lines_after_block_statements = 1
+resharper_blank_lines_after_multiline_statements = 1
+resharper_blank_lines_before_block_statements = 1
+resharper_blank_lines_before_control_transfer_statements = 1
+resharper_braces_for_foreach = required
+resharper_csharp_blank_lines_around_invocable = 0
+resharper_csharp_insert_final_newline = true
+resharper_csharp_keep_existing_enum_arrangement = false
+resharper_csharp_max_line_length = 151
+resharper_instance_members_qualify_declared_in = 
+resharper_trailing_comma_in_multiline_lists = true
+resharper_wrap_object_and_collection_initializer_style = chop_always
+resharper_wrap_ternary_expr_style = chop_if_long
+
+# Code files
+[*.{cs,csx}]
+indent_size = 4
+
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options
+
+# New-line options
+# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#new-line-options
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = false
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_between_query_expression_clauses = true
+
+# Indentation options
+# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#indentation-options
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_indent_labels = flush_left
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents_when_block = false
+
+# Spacing options
+# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#spacing-options
+csharp_space_after_cast = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_after_comma = true
+csharp_space_before_comma = false
+csharp_space_after_dot = false
+csharp_space_before_dot = false
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_around_declaration_statements = false
+csharp_space_before_open_square_brackets = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_square_brackets = false
+
+# Wrap options
+# https://docs.microsoft.com/visualstudio/ide/editorconfig-formatting-conventions#wrap-options
+csharp_preserve_single_line_statements = false
+csharp_preserve_single_line_blocks = true
+
+dotnet_sort_system_directives_first = true
+
+csharp_style_namespace_declarations = file_scoped:suggestion
+
+roslynator_accessibility_modifiers = explicit
+roslynator_accessor_braces_style = single_line_when_expression_is_on_single_line
+roslynator_array_creation_type_style = implicit_when_type_is_obvious
+roslynator_arrow_token_new_line = before
+roslynator_binary_operator_new_line = before
+roslynator_blank_line_between_single_line_accessors = false
+roslynator_blank_line_between_using_directives = never
+roslynator_block_braces_style = multi_line
+roslynator_conditional_operator_condition_parentheses_style = include
+roslynator_conditional_operator_new_line = before
+roslynator_configure_await = true
+roslynator_empty_string_style = literal
+roslynator_enum_has_flag_style = operator
+roslynator_equals_token_new_line = before
+roslynator_max_line_length = 140
+roslynator_new_line_at_end_of_file = true
+roslynator_new_line_before_while_in_do_statement = true
+roslynator_null_conditional_operator_new_line = after
+roslynator_null_check_style = pattern_matching
+roslynator_object_creation_parentheses_style = include
+roslynator_object_creation_type_style = implicit_when_type_is_obvious
+roslynator_prefix_field_identifier_with_underscore = true
+roslynator_use_anonymous_function_or_method_group = anonymous_function
+roslynator_use_block_body_when_declaration_spans_over_multiple_lines = true
+roslynator_use_block_body_when_expression_spans_over_multiple_lines = true
+roslynator_use_var_instead_of_implicit_object_creation = true
+roslynator_infinite_loop_style = while
+roslynator_doc_comment_summary_style = multi_line
+roslynator_enum_flag_value_style = shift_operator
+roslynator_blank_line_after_file_scoped_namespace_declaration = true
+roslynator_null_check_style = pattern_matching
+roslynator_trailing_comma_style = omit
+roslynator_use_collection_expression = true
+roslynator_blank_line_between_switch_sections = omit
+roslynator_use_var = when_type_is_obvious
+
+dotnet_diagnostic.rcs0001.severity = suggestion
+dotnet_diagnostic.rcs0003.severity = suggestion
+dotnet_diagnostic.rcs0004.severity = suggestion
+dotnet_diagnostic.rcs0006.severity = suggestion
+dotnet_diagnostic.rcs0011.severity = suggestion
+dotnet_diagnostic.rcs0013.severity = suggestion
+dotnet_diagnostic.rcs0015.severity = suggestion
+dotnet_diagnostic.rcs0016.severity = suggestion
+dotnet_diagnostic.rcs0020.severity = suggestion
+dotnet_diagnostic.rcs0021.severity = suggestion
+dotnet_diagnostic.rcs0022.severity = suggestion
+dotnet_diagnostic.rcs0023.severity = suggestion
+dotnet_diagnostic.rcs0024.severity = suggestion
+dotnet_diagnostic.rcs0025.severity = suggestion
+dotnet_diagnostic.rcs0027.severity = suggestion
+dotnet_diagnostic.rcs0028.severity = suggestion
+dotnet_diagnostic.rcs0030.severity = suggestion
+dotnet_diagnostic.rcs0031.severity = suggestion
+dotnet_diagnostic.rcs0032.severity = suggestion
+dotnet_diagnostic.rcs0033.severity = suggestion
+dotnet_diagnostic.rcs0038.severity = suggestion
+dotnet_diagnostic.rcs0039.severity = suggestion
+dotnet_diagnostic.rcs0041.severity = suggestion
+dotnet_diagnostic.rcs0042.severity = suggestion
+dotnet_diagnostic.rcs0046.severity = suggestion
+dotnet_diagnostic.rcs0048.severity = silent
+dotnet_diagnostic.rcs0049.severity = suggestion
+dotnet_diagnostic.rcs0050.severity = suggestion
+dotnet_diagnostic.rcs0051.severity = warning
+dotnet_diagnostic.rcs0053.severity = none
+dotnet_diagnostic.rcs0054.severity = suggestion
+dotnet_diagnostic.rcs0055.severity = suggestion
+dotnet_diagnostic.rcs0056.severity = none
+dotnet_diagnostic.rcs0057.severity = suggestion
+dotnet_diagnostic.rcs0058.severity = warning
+dotnet_diagnostic.rcs0059.severity = suggestion
+dotnet_diagnostic.rcs0060.severity = suggestion
+dotnet_diagnostic.rcs0061.severity = suggestion
+dotnet_diagnostic.rcs1001.severity = warning
+dotnet_diagnostic.rcs1002.severity = silent
+dotnet_diagnostic.rcs1006.severity = suggestion
+dotnet_diagnostic.rcs1008.severity = none
+dotnet_diagnostic.rcs1009.severity = none
+dotnet_diagnostic.rcs1010.severity = none
+dotnet_diagnostic.rcs1013.severity = suggestion
+dotnet_diagnostic.rcs1014.severity = none
+dotnet_diagnostic.rcs1016.severity = suggestion
+dotnet_diagnostic.rcs1017.severity = suggestion
+dotnet_diagnostic.rcs1018.severity = warning
+dotnet_diagnostic.rcs1019.severity = none
+dotnet_diagnostic.rcs1021.severity = warning
+dotnet_diagnostic.rcs1034.severity = suggestion
+dotnet_diagnostic.rcs1036.severity = warning
+dotnet_diagnostic.rcs1037.severity = warning
+dotnet_diagnostic.rcs1039.severity = warning
+dotnet_diagnostic.rcs1040.severity = suggestion
+dotnet_diagnostic.rcs1042.severity = suggestion
+dotnet_diagnostic.rcs1043.severity = suggestion
+dotnet_diagnostic.rcs1045.severity = warning
+dotnet_diagnostic.rcs1050.severity = suggestion
+dotnet_diagnostic.rcs1051.severity = none
+dotnet_diagnostic.rcs1060.severity = suggestion
+dotnet_diagnostic.rcs1061.severity = suggestion
+dotnet_diagnostic.rcs1062.severity = suggestion
+dotnet_diagnostic.rcs1066.severity = suggestion
+dotnet_diagnostic.rcs1069.severity = suggestion
+dotnet_diagnostic.rcs1070.severity = suggestion
+dotnet_diagnostic.rcs1071.severity = suggestion
+dotnet_diagnostic.rcs1074.severity = suggestion
+dotnet_diagnostic.rcs1076.severity = none
+dotnet_diagnostic.rcs1078.severity = none
+dotnet_diagnostic.rcs1079.severity = warning
+dotnet_diagnostic.rcs1081.severity = suggestion
+dotnet_diagnostic.rcs1082.severity = suggestion
+dotnet_diagnostic.rcs1083.severity = suggestion
+dotnet_diagnostic.rcs1090.severity = warning
+dotnet_diagnostic.rcs1091.severity = suggestion
+dotnet_diagnostic.rcs1096.severity = warning
+dotnet_diagnostic.rcs1118.severity = warning
+dotnet_diagnostic.rcs1124.severity = warning
+dotnet_diagnostic.rcs1126.severity = warning
+dotnet_diagnostic.rcs1129.severity = suggestion
+dotnet_diagnostic.rcs1133.severity = suggestion
+dotnet_diagnostic.rcs1134.severity = suggestion
+dotnet_diagnostic.rcs1136.severity = suggestion
+dotnet_diagnostic.rcs1138.severity = suggestion
+dotnet_diagnostic.rcs1139.severity = suggestion
+dotnet_diagnostic.rcs1143.severity = suggestion
+dotnet_diagnostic.rcs1145.severity = suggestion
+dotnet_diagnostic.rcs1151.severity = suggestion
+dotnet_diagnostic.rcs1162.severity = suggestion
+dotnet_diagnostic.rcs1163.severity = warning
+dotnet_diagnostic.rcs1170.severity = none
+dotnet_diagnostic.rcs1188.severity = suggestion
+dotnet_diagnostic.rcs1189.severity = suggestion
+dotnet_diagnostic.rcs1205.severity = suggestion
+dotnet_diagnostic.rcs1207.severity = none
+dotnet_diagnostic.rcs1221.severity = warning
+dotnet_diagnostic.rcs1225.severity = none
+dotnet_diagnostic.rcs1228.severity = suggestion
+dotnet_diagnostic.rcs1237.severity = none
+dotnet_diagnostic.rcs1244.severity = suggestion
+dotnet_diagnostic.rcs1248.severity = warning
+dotnet_diagnostic.rcs1250.severity = none
+dotnet_diagnostic.rcs1251.severity = warning
+dotnet_diagnostic.rcs1252.severity = suggestion
+dotnet_diagnostic.rcs1253.severity = suggestion
+dotnet_diagnostic.rcs1254.severity = suggestion
+dotnet_diagnostic.rcs1255.severity = none
+dotnet_diagnostic.rcs1260.severity = none
+dotnet_diagnostic.rcs1264.severity = none
+dotnet_diagnostic.rcs9001.severity = suggestion
+
+dotnet_diagnostic.ide0007.severity = none
+dotnet_diagnostic.ide0007withoutsuggestion.severity = none
+dotnet_diagnostic.ide0008.severity = none
+dotnet_diagnostic.ide0008withoutsuggestion.severity = none
+dotnet_diagnostic.ide0010.severity = none
+dotnet_diagnostic.ide0010withoutsuggestion.severity = none
+dotnet_diagnostic.ide0011.severity = none
+dotnet_diagnostic.ide0011withoutsuggestion.severity = none
+dotnet_diagnostic.ide0021.severity = none
+dotnet_diagnostic.ide0021withoutsuggestion.severity = none
+dotnet_diagnostic.ide0022.severity = none
+dotnet_diagnostic.ide0022withoutsuggestion.severity = none
+dotnet_diagnostic.ide0023.severity = none
+dotnet_diagnostic.ide0023withoutsuggestion.severity = none
+dotnet_diagnostic.ide0024.severity = none
+dotnet_diagnostic.ide0024withoutsuggestion.severity = none
+dotnet_diagnostic.ide0025.severity = none
+dotnet_diagnostic.ide0025withoutsuggestion.severity = none
+dotnet_diagnostic.ide0026.severity = none
+dotnet_diagnostic.ide0026withoutsuggestion.severity = none
+dotnet_diagnostic.ide0027.severity = none
+dotnet_diagnostic.ide0027withoutsuggestion.severity = none
+dotnet_diagnostic.ide0028.severity = none # Collection initialization can be simplified
+dotnet_diagnostic.ide0029.severity = suggestion
+dotnet_diagnostic.ide0031.severity = suggestion
+dotnet_diagnostic.ide0033.severity = suggestion
+dotnet_diagnostic.ide0034.severity = none
+dotnet_diagnostic.ide0046.severity = none
+dotnet_diagnostic.ide0046withoutsuggestion.severity = none
+dotnet_diagnostic.ide0047.severity = none
+dotnet_diagnostic.ide0047withoutsuggestion.severity = none
+dotnet_diagnostic.ide0054.severity = none
+dotnet_diagnostic.ide0054withoutsuggestion.severity = none
+dotnet_diagnostic.ide0056.severity = none
+dotnet_diagnostic.ide0057.severity = none
+dotnet_diagnostic.ide0063.severity = none
+dotnet_diagnostic.ide0063withoutsuggestion.severity = none
+dotnet_diagnostic.ide0066.severity = silent
+dotnet_diagnostic.ide0066withoutsuggestion.severity = none
+dotnet_diagnostic.ide0071.severity = none
+dotnet_diagnostic.ide0071withoutsuggestion.severity = none
+dotnet_diagnostic.ide0074.severity = none
+dotnet_diagnostic.ide0074withoutsuggestion.severity = none
+dotnet_diagnostic.ide0079.severity = none
+dotnet_diagnostic.ide0090.severity = none
+dotnet_diagnostic.ide0130.severity = none
+dotnet_diagnostic.ide0220.severity = none
+dotnet_diagnostic.ide0270.severity = silent
+dotnet_diagnostic.ide0290.severity = none # Use primary constructor
+dotnet_diagnostic.ide0300.severity = none # Use collection expression
+dotnet_diagnostic.ide0301.severity = none # ImmutableArray<object>.Empty -> []
+dotnet_diagnostic.ide0303.severity = none # ImmutableArray.Create(x) -> [x]
+dotnet_diagnostic.ide0305.severity = none # x.ToArray() -> [.. x]
+dotnet_diagnostic.ide1005.severity = suggestion
+dotnet_diagnostic.ide1006.severity = suggestion
+
+dotnet_diagnostic.rs1024.severity = none # Compare symbols correctly
+dotnet_diagnostic.rs1025.severity = none
+dotnet_diagnostic.rs1026.severity = none
+
+dotnet_diagnostic.ca1305.severity = warning
+dotnet_diagnostic.ca1806.severity = none
+dotnet_diagnostic.ca1826.severity = none
+dotnet_diagnostic.ca1860.severity = none
+dotnet_diagnostic.ca1861.severity = none
+dotnet_diagnostic.ca1866.severity = warning
+dotnet_diagnostic.ca2016.severity = warning
+dotnet_diagnostic.ca2231.severity = none
+dotnet_diagnostic.ca2263.severity = warning
+
+dotnet_diagnostic.syslib1045.severity = silent # Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.
