@@ -83,6 +83,6 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
                        }
                        """;
 
-        context.AddSource($"{className}Factory.cs", source);
+        context.AddSource($"{className}Factory.g.cs", source);
     }
 }
