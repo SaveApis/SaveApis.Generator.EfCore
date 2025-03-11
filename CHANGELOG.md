@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="1.0.2"></a>
+## [1.0.2](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v1.0.2) (2025-03-11)
+
+### Other
+
+* Change generated filename ([#6](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/6)) ([7c50e08](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/7c50e08232322de91f122a931700287d7f2c503a))
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v1.0.1) (2025-03-01)
 
