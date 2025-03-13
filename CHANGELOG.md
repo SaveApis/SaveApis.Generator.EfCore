@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="2.0.1"></a>
+## [2.0.1](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v2.0.1) (2025-03-13)
+
+### 🐛 Bug Fixes
+
+* **entity:** Missing usings in generated files ([#8](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/8)) ([1f7c494](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/1f7c4943d5f2a1120deecc6d7626675e0661286e))
+
 <a name="2.0.0"></a>
 ## [2.0.0](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v2.0.0) (2025-03-13)
 
