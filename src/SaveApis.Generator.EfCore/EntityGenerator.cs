@@ -41,6 +41,7 @@ public class EntityGenerator : IIncrementalGenerator
     {
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
+        var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
         
         var properties = syntax.Members
             .OfType<PropertyDeclarationSyntax>()
@@ -50,6 +51,12 @@ public class EntityGenerator : IIncrementalGenerator
             .ToList();
 
         var builder = new StringBuilder();
+
+        foreach (var @using in usings)
+        {
+            builder.Append("using ").Append(@using.Name).AppendLine(";");
+        }
+        builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
         builder.AppendLine($"public partial class {name}");
@@ -76,8 +83,15 @@ public class EntityGenerator : IIncrementalGenerator
     {
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
+        var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
         
         var builder = new StringBuilder();
+
+        foreach (var @using in usings)
+        {
+            builder.Append("using ").Append(@using.Name).AppendLine(";");
+        }
+        builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
         builder.AppendLine($"public partial class {name}");
@@ -100,6 +114,7 @@ public class EntityGenerator : IIncrementalGenerator
     {
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
+        var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
         
         var properties = syntax.Members
             .OfType<PropertyDeclarationSyntax>()
@@ -109,6 +124,12 @@ public class EntityGenerator : IIncrementalGenerator
             .ToList();
 
         var builder = new StringBuilder();
+
+        foreach (var @using in usings)
+        {
+            builder.Append("using ").Append(@using.Name).AppendLine(";");
+        }
+        builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
         builder.AppendLine($"public partial class {name}");
@@ -141,6 +162,7 @@ public class EntityGenerator : IIncrementalGenerator
     {
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
+        var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
 
         var properties = syntax.Members
             .OfType<PropertyDeclarationSyntax>()
@@ -149,6 +171,8 @@ public class EntityGenerator : IIncrementalGenerator
             .ToList();
 
         var source = $$"""
+                       {{string.Join("\n", usings.Select(u => $"using {u.Name};"))}}
+
                        namespace {{@namespace}};
 
                        public partial class {{name}}
@@ -165,6 +189,7 @@ public class EntityGenerator : IIncrementalGenerator
     {
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
+        var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
 
         var properties = syntax.Members
             .OfType<PropertyDeclarationSyntax>()
@@ -173,6 +198,12 @@ public class EntityGenerator : IIncrementalGenerator
             .ToList();
         
         var builder = new StringBuilder();
+
+        foreach (var @using in usings)
+        {
+            builder.Append("using ").Append(@using.Name).AppendLine(";");
+        }
+        builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
         builder.AppendLine($"public partial class {name}");
