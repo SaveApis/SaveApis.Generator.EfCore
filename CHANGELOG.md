@@ -1,4 +1,15 @@
 SaveApis.Generator.EfCore
+<a name="2.0.0"></a>
+## [2.0.0](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v2.0.0) (2025-03-13)
+
+### ✨ Features
+
+* **entity:** Entity generator ([#7](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/7)) ([f3f4e2d](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/f3f4e2d35eec43b16631eb4204a33c9df84359cc))
+
+### Breaking Changes
+
+* **entity:** Entity generator ([#7](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/7)) ([f3f4e2d](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/f3f4e2d35eec43b16631eb4204a33c9df84359cc))
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v1.0.2) (2025-03-11)
 
