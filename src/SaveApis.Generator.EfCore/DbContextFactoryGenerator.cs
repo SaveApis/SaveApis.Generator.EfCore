@@ -54,7 +54,7 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
                       }
                       """;
 
-        context.AddSource($"I{className}Factory.g.cs", source);
+        context.AddSource($"Factories/I{className}Factory.g.cs", source);
     }
 
     private static void GenerateFactory(SourceProductionContext context, ClassDeclarationSyntax syntax)
@@ -83,6 +83,6 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
                        }
                        """;
 
-        context.AddSource($"{className}Factory.g.cs", source);
+        context.AddSource($"Factories/{className}Factory.g.cs", source);
     }
 }
