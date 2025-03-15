@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.0"></a>
+## [3.0.0](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.0) (2025-03-15)
+
+### Breaking Changes
+
+* **entity:** Tracking source generation rework ([#9](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/9)) ([4f1e0ea](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/4f1e0ea5607295c0c1ccec750427cc2b9495155d))
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v2.0.1) (2025-03-13)
 
