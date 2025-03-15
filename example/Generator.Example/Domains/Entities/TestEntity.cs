@@ -1,4 +1,4 @@
-﻿using SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities;
+﻿using SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Interfaces;
 
 namespace Generator.Example.Domains.Entities;
 
