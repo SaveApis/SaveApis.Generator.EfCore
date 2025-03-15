@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -43,18 +44,19 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
 
         var className = syntax.Identifier.ToString();
 
-        var source = $$"""
-                      using {{namespaceName}};
-                      
-                      namespace {{namespaceName}}.Factories;
+        var builder = new StringBuilder();
+        
+        builder.AppendLine("using " + namespaceName + ";");
+        builder.AppendLine();
+        builder.AppendLine("namespace " + namespaceName + ".Factories;");
+        builder.AppendLine();
+        builder.AppendLine("public interface I" + className + "Factory");
+        builder.AppendLine("{");
+        builder.AppendLine("\t" + className + " Create();");
+        builder.AppendLine("}");
+        builder.AppendLine();
 
-                      public interface I{{className}}Factory
-                      {
-                          {{className}} Create();
-                      }
-                      """;
-
-        context.AddSource($"Factories/I{className}Factory.g.cs", source);
+        context.AddSource($"{className}/I{className}Factory.g.cs", builder.ToString());
     }
 
     private static void GenerateFactory(SourceProductionContext context, ClassDeclarationSyntax syntax)
@@ -63,26 +65,28 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
                             throw new InvalidOperationException("Namespace not found");
         var className = syntax.Identifier.ToString();
 
-        var source = $$"""
-                       using {{namespaceName}};
-                       using Microsoft.Extensions.Configuration;
-                       using SaveApis.Common.Infrastructure.Persistence.Sql.Factories;
+        var builder = new StringBuilder();
+        
+        builder.AppendLine("using " + namespaceName + ";");
+        builder.AppendLine("using MediatR;");
+        builder.AppendLine("using Microsoft.Extensions.Configuration;");
+        builder.AppendLine("using SaveApis.Common.Infrastructure.Persistence.Sql.Factories;");
+        builder.AppendLine();
+        builder.AppendLine("namespace " + namespaceName + ".Factories;");
+        builder.AppendLine();
+        builder.AppendLine("public class " + className + "Factory(IConfiguration configuration, IMediator mediator) : BaseDbContextFactory<" + className + ">(configuration, mediator), I" + className + "Factory");
+        builder.AppendLine("{");
+        builder.AppendLine("\tpublic " + className + "Factory() : this(new ConfigurationBuilder().AddInMemoryCollection().Build(), null!)");
+        builder.AppendLine("\t{");
+        builder.AppendLine("\t}");
+        builder.AppendLine();
+        builder.AppendLine("\tpublic " + className + " Create()");
+        builder.AppendLine("\t{");
+        builder.AppendLine("\t\treturn CreateDbContext([]);");
+        builder.AppendLine("\t}");
+        builder.AppendLine("}");
+        builder.AppendLine();
 
-                       namespace {{namespaceName}}.Factories;
-
-                       public class {{className}}Factory(IConfiguration configuration) : BaseDbContextFactory<{{className}}>(configuration), I{{className}}Factory
-                       {
-                           public {{className}}Factory() : this(new ConfigurationBuilder().AddInMemoryCollection().Build())
-                           {
-                           }
-                           
-                           public {{className}} Create()
-                           {
-                                return CreateDbContext([]);
-                           }
-                       }
-                       """;
-
-        context.AddSource($"Factories/{className}Factory.g.cs", source);
+        context.AddSource($"{className}/{className}Factory.g.cs", builder.ToString());
     }
 }
