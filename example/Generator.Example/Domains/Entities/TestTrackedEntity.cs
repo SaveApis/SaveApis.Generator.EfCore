@@ -1,10 +1,10 @@
 ﻿using SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Attributes;
-using SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Interfaces;
 
 namespace Generator.Example.Domains.Entities;
 
+[Entity]
 [TrackedEntity]
-public partial class TestTrackedEntity : IEntity<Guid>
+public partial class TestTrackedEntity
 {
     public Guid Id { get; }
     public string Test { get; private set; }
