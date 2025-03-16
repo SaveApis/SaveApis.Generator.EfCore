@@ -31,6 +31,7 @@ public class EntityGenerator : IIncrementalGenerator
     // Entity
     private static void GenerateConstructor(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
+        var baseTypes = syntax.BaseList!.Types.Select(it => it.ToString());
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
         var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
@@ -50,7 +51,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
-        builder.AppendLine($"public partial class {name}");
+        builder.AppendLine($"public partial class {name} : {string.Join(", ", baseTypes)}");
         builder.AppendLine("{");
         builder.AppendLine($"\tprivate {name}({string.Join(", ", properties.Select(p => $"{p.Type} {char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
         builder.AppendLine("\t{");
@@ -66,6 +67,7 @@ public class EntityGenerator : IIncrementalGenerator
     }
     private static void GenerateCreateMethod(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
+        var baseTypes = syntax.BaseList!.Types.Select(it => it.ToString());
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
         var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
@@ -85,7 +87,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
-        builder.AppendLine($"public partial class {name}");
+        builder.AppendLine($"public partial class {name} : {string.Join(", ", baseTypes)}");
         builder.AppendLine("{");
         builder.AppendLine(
             $"\tpublic static {name} Create({string.Join(", ", properties.Select(p => $"{p.Type} {char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
@@ -101,10 +103,10 @@ public class EntityGenerator : IIncrementalGenerator
     }
     private static void GenerateUpdateMethod(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
+        var baseTypes = syntax.BaseList!.Types.Select(it => it.ToString());
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
         var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
-        var hasTracking = syntax.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "TrackedEntity"));
 
         var properties = syntax.Members
             .OfType<PropertyDeclarationSyntax>()
@@ -123,7 +125,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
-        builder.AppendLine($"public partial class {name}");
+        builder.AppendLine($"public partial class {name} : {string.Join(", ", baseTypes)}");
         builder.AppendLine("{");
 
         foreach (var property in properties)
