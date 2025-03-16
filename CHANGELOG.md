@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.3"></a>
+## [3.0.3](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.3) (2025-03-16)
+
+### Other
+
+* **entity:** Add base type to source generated files ([#12](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/12)) ([60ad38b](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/60ad38b35cc12fba7461203aff5587b4c6464ca6))
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.2) (2025-03-16)
 
