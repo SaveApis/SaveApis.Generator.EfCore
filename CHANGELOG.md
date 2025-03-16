@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.2"></a>
+## [3.0.2](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.2) (2025-03-16)
+
+### Other
+
+* **entity:** Remove unnessecary tracking interface and properties ([#11](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/11)) ([7492c02](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/7492c02b2cf97ef54dff92ebe49341f3ce0cd862))
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.1) (2025-03-15)
 
