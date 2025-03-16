@@ -13,14 +13,14 @@ public class EntityGenerator : IIncrementalGenerator
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         // Infrastructure
-        context.RegisterPostInitializationOutput(GenerateEntityInterface);
+        context.RegisterPostInitializationOutput(GenerateEntityAttribute);
         context.RegisterPostInitializationOutput(GenerateTrackedEntityAttribute);
         context.RegisterPostInitializationOutput(GenerateIgnoreTrackingAttribute);
         context.RegisterPostInitializationOutput(GenerateAnonymizeTrackingAttribute);
 
         // Entities
         var entityProvider = context.SyntaxProvider.CreateSyntaxProvider(
-            (node, _) => SyntaxHelper.FilterGenericBaseType(node, "IEntity"),
+            (node, _) => SyntaxHelper.FilterAttribute(node, "Entity"),
             (syntaxContext, _) => SyntaxHelper.Transform(syntaxContext)
         );
         context.RegisterSourceOutput(entityProvider, GenerateConstructor);
@@ -31,7 +31,7 @@ public class EntityGenerator : IIncrementalGenerator
     // Entity
     private static void GenerateConstructor(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
-        var baseTypes = syntax.BaseList!.Types.Select(it => it.ToString());
+        var baseTypes = syntax.BaseList?.Types.Select(it => it.ToString()) ?? [];
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
         var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
@@ -51,7 +51,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
-        builder.AppendLine($"public partial class {name} : {string.Join(", ", baseTypes)}");
+        builder.AppendLine($"public partial class {name}{(baseTypes.Any() ? " :" : "")} {string.Join(", ", baseTypes)}");
         builder.AppendLine("{");
         builder.AppendLine($"\tprivate {name}({string.Join(", ", properties.Select(p => $"{p.Type} {char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
         builder.AppendLine("\t{");
@@ -67,7 +67,7 @@ public class EntityGenerator : IIncrementalGenerator
     }
     private static void GenerateCreateMethod(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
-        var baseTypes = syntax.BaseList!.Types.Select(it => it.ToString());
+        var baseTypes = syntax.BaseList?.Types.Select(it => it.ToString()) ?? [];
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
         var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
@@ -87,7 +87,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
-        builder.AppendLine($"public partial class {name} : {string.Join(", ", baseTypes)}");
+        builder.AppendLine($"public partial class {name}{(baseTypes.Any() ? " :" : "")} {string.Join(", ", baseTypes)}");
         builder.AppendLine("{");
         builder.AppendLine(
             $"\tpublic static {name} Create({string.Join(", ", properties.Select(p => $"{p.Type} {char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
@@ -103,7 +103,7 @@ public class EntityGenerator : IIncrementalGenerator
     }
     private static void GenerateUpdateMethod(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
-        var baseTypes = syntax.BaseList!.Types.Select(it => it.ToString());
+        var baseTypes = syntax.BaseList?.Types.Select(it => it.ToString()) ?? [];
         var name = syntax.Identifier.Text;
         var @namespace = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()!.Name.ToString();
         var usings = syntax.FirstAncestorOrSelf<CompilationUnitSyntax>()!.Usings;
@@ -125,7 +125,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"namespace {@namespace};");
         builder.AppendLine();
-        builder.AppendLine($"public partial class {name} : {string.Join(", ", baseTypes)}");
+        builder.AppendLine($"public partial class {name}{(baseTypes.Any() ? " :" : "")} {string.Join(", ", baseTypes)}");
         builder.AppendLine("{");
 
         foreach (var property in properties)
@@ -147,16 +147,14 @@ public class EntityGenerator : IIncrementalGenerator
     }
 
     // Infrastructure
-    private static void GenerateEntityInterface(IncrementalGeneratorPostInitializationContext context)
+    private static void GenerateEntityAttribute(IncrementalGeneratorPostInitializationContext context)
     {
         var builder = new StringBuilder();
-
-        builder.AppendLine("namespace SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Interfaces;");
+        
+        builder.AppendLine("namespace SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Attributes;");
         builder.AppendLine();
-        builder.AppendLine("public interface IEntity<TKeyType>");
-        builder.AppendLine("{");
-        builder.AppendLine("\tTKeyType Id { get; }");
-        builder.AppendLine("}");
+        builder.AppendLine("[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]");
+        builder.AppendLine("public sealed class EntityAttribute : Attribute;");
         builder.AppendLine();
 
         context.AddSource("Infrastructure/IEntity.g.cs", builder.ToString());

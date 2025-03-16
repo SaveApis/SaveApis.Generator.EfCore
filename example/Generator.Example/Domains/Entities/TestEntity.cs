@@ -1,8 +1,9 @@
-﻿using SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Interfaces;
+﻿using SaveApis.Generator.EfCore.Infrastructure.Persistence.Sql.Entities.Attributes;
 
 namespace Generator.Example.Domains.Entities;
 
-public partial class TestEntity : IEntity<Guid>
+[Entity]
+public partial class TestEntity
 {
     public Guid Id { get; }
     public string Test { get; }
