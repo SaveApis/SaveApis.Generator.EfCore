@@ -46,19 +46,18 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
 
         var builder = new StringBuilder();
         
-        builder.AppendLine("using " + namespaceName + ";");
+        builder.AppendLine($"using {namespaceName};");
         builder.AppendLine();
-        builder.AppendLine("namespace " + namespaceName + ".Factories;");
+        builder.AppendLine($"namespace {namespaceName}.Factories;");
         builder.AppendLine();
-        builder.AppendLine("public interface I" + className + "Factory");
+        builder.AppendLine($"public interface I{className}Factory");
         builder.AppendLine("{");
-        builder.AppendLine("\t" + className + " Create();");
+        builder.AppendLine($"\t{className} Create();");
         builder.AppendLine("}");
         builder.AppendLine();
 
         context.AddSource($"{className}/I{className}Factory.g.cs", builder.ToString());
     }
-
     private static void GenerateFactory(SourceProductionContext context, ClassDeclarationSyntax syntax)
     {
         var namespaceName = syntax.FirstAncestorOrSelf<FileScopedNamespaceDeclarationSyntax>()?.Name.ToString() ??
@@ -67,20 +66,20 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
 
         var builder = new StringBuilder();
         
-        builder.AppendLine("using " + namespaceName + ";");
+        builder.AppendLine($"using {namespaceName};");
         builder.AppendLine("using MediatR;");
         builder.AppendLine("using Microsoft.Extensions.Configuration;");
         builder.AppendLine("using SaveApis.Common.Infrastructure.Persistence.Sql.Factories;");
         builder.AppendLine();
-        builder.AppendLine("namespace " + namespaceName + ".Factories;");
+        builder.AppendLine($"namespace {namespaceName}.Factories;");
         builder.AppendLine();
-        builder.AppendLine("public class " + className + "Factory(IConfiguration configuration, IMediator mediator) : BaseDbContextFactory<" + className + ">(configuration, mediator), I" + className + "Factory");
+        builder.AppendLine($"public class {className}Factory(IConfiguration configuration, IMediator mediator) : BaseDbContextFactory<{className}>(configuration, mediator), I{className}Factory");
         builder.AppendLine("{");
-        builder.AppendLine("\tpublic " + className + "Factory() : this(new ConfigurationBuilder().AddInMemoryCollection().Build(), null!)");
+        builder.AppendLine($"\tpublic {className}Factory() : this(new ConfigurationBuilder().AddInMemoryCollection().Build(), null!)");
         builder.AppendLine("\t{");
         builder.AppendLine("\t}");
         builder.AppendLine();
-        builder.AppendLine("\tpublic " + className + " Create()");
+        builder.AppendLine($"\tpublic {className} Create()");
         builder.AppendLine("\t{");
         builder.AppendLine("\t\treturn CreateDbContext([]);");
         builder.AppendLine("\t}");
