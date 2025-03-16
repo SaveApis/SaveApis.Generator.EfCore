@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.4"></a>
+## [3.0.4](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.4) (2025-03-16)
+
+### Other
+
+* **entity:** Replace entity interface with attribute ([#13](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/13)) ([24cdc72](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/24cdc72f8ba290c37180afc6f5daa7c4770f7cdc))
+
 <a name="3.0.3"></a>
 ## [3.0.3](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.3) (2025-03-16)
 
