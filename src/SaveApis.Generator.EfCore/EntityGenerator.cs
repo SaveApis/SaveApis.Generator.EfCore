@@ -157,7 +157,7 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine("public sealed class EntityAttribute : Attribute;");
         builder.AppendLine();
 
-        context.AddSource("Infrastructure/IEntity.g.cs", builder.ToString());
+        context.AddSource("Infrastructure/EntityAttribute.g.cs", builder.ToString());
     }
     private static void GenerateTrackedEntityAttribute(IncrementalGeneratorPostInitializationContext context)
     {
