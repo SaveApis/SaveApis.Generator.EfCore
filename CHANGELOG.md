@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.6"></a>
+## [3.0.6](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.6) (2025-03-20)
+
+### Other
+
+* **entity:** Exclude attributes to SaveApis.Common-Library ([#15](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/15)) ([a382805](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/a38280523878b09af7e7988af74f0a27ad6dd2db))
+
 <a name="3.0.5"></a>
 ## [3.0.5](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.5) (2025-03-18)
 
