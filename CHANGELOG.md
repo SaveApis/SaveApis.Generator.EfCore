@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.7"></a>
+## [3.0.7](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.7) (2025-03-20)
+
+### 🐛 Bug Fixes
+
+* **entity:** Fix properties with keyword name ([#16](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/16)) ([f50e1c7](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/f50e1c74611d1227d63b9ab96cc30bbea2423dae))
+
 <a name="3.0.6"></a>
 ## [3.0.6](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.6) (2025-03-20)
 
