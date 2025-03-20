@@ -46,11 +46,11 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine();
         builder.AppendLine($"public partial class {name}");
         builder.AppendLine("{");
-        builder.AppendLine($"\tprivate {name}({string.Join(", ", properties.Select(p => $"{p.Type} {char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
+        builder.AppendLine($"\tprivate {name}({string.Join(", ", properties.Select(p => $"{p.Type} {(SyntaxHelper.IsKeyWord(p) ? '@' : "")}{char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
         builder.AppendLine("\t{");
         foreach (var property in properties)
         {
-            builder.AppendLine($"\t\t{property.Identifier.Text} = {char.ToLower(property.Identifier.Text[0])}{property.Identifier.Text.Substring(1)};");
+            builder.AppendLine($"\t\t{property.Identifier.Text} = {(SyntaxHelper.IsKeyWord(property) ? '@' : "")}{char.ToLower(property.Identifier.Text[0])}{property.Identifier.Text.Substring(1)};");
         }
         builder.AppendLine("\t}");
         builder.AppendLine("}");
@@ -82,10 +82,10 @@ public class EntityGenerator : IIncrementalGenerator
         builder.AppendLine($"public partial class {name}");
         builder.AppendLine("{");
         builder.AppendLine(
-            $"\tpublic static {name} Create({string.Join(", ", properties.Select(p => $"{p.Type} {char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
+            $"\tpublic static {name} Create({string.Join(", ", properties.Select(p => $"{p.Type} {(SyntaxHelper.IsKeyWord(p) ? '@' : "")}{char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))})");
         builder.AppendLine("\t{");
         builder.AppendLine(
-            $"\t\treturn new {name}({string.Join(", ", properties.Select(p => $"{char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))});");
+            $"\t\treturn new {name}({string.Join(", ", properties.Select(p => $"{(SyntaxHelper.IsKeyWord(p) ? '@' : "")}{char.ToLower(p.Identifier.Text[0])}{p.Identifier.Text.Substring(1)}"))});");
         builder.AppendLine("\t}");
         builder.AppendLine("}");
         builder.AppendLine();
@@ -121,9 +121,9 @@ public class EntityGenerator : IIncrementalGenerator
 
         foreach (var property in properties)
         {
-            builder.AppendLine($"\tpublic {name} Update{property.Identifier.Text}({property.Type} {char.ToLower(property.Identifier.Text[0])}{property.Identifier.Text.Substring(1)})");
+            builder.AppendLine($"\tpublic {name} Update{property.Identifier.Text}({property.Type} {(SyntaxHelper.IsKeyWord(property) ? '@' : "")}{char.ToLower(property.Identifier.Text[0])}{property.Identifier.Text.Substring(1)})");
             builder.AppendLine("\t{");
-            builder.AppendLine($"\t\t{property.Identifier.Text} = {char.ToLower(property.Identifier.Text[0])}{property.Identifier.Text.Substring(1)};");
+            builder.AppendLine($"\t\t{property.Identifier.Text} = {(SyntaxHelper.IsKeyWord(property) ? '@' : "")}{char.ToLower(property.Identifier.Text[0])}{property.Identifier.Text.Substring(1)};");
             builder.AppendLine();
             builder.AppendLine("\t\treturn this;");
             builder.AppendLine("\t}");
