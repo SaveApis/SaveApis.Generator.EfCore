@@ -69,7 +69,7 @@ public class DbContextFactoryGenerator : IIncrementalGenerator
         builder.AppendLine($"using {namespaceName};");
         builder.AppendLine("using MediatR;");
         builder.AppendLine("using Microsoft.Extensions.Configuration;");
-        builder.AppendLine("using SaveApis.Common.Domains.EfCore.Infrastructure.Persistence.Sql;");
+        builder.AppendLine("using SaveApis.Common.Domains.EfCore.Infrastructure.Persistence.Sql.Factories;");
         builder.AppendLine();
         builder.AppendLine($"namespace {namespaceName}.Factories;");
         builder.AppendLine();

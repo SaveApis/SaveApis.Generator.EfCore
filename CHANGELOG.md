@@ -1,4 +1,11 @@
 SaveApis.Generator.EfCore
+<a name="3.0.8"></a>
+## [3.0.8](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.8) (2025-03-25)
+
+### 🐛 Bug Fixes
+
+* **factory:** Fix wrong base factory Namespace [#17](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/issues/17) ([c2aec3b](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/commit/c2aec3be75a91f07c218c74ea4c3526552d387b9))
+
 <a name="3.0.7"></a>
 ## [3.0.7](https://www.github.com/SaveApis/SaveApis.Generator.EfCore/releases/tag/v3.0.7) (2025-03-20)
 
